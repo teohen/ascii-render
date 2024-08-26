@@ -1,43 +1,34 @@
 package main
 
 import (
-	"fmt"
-	"image"
+	"flag"
+	"github.com/teohen/ascii-render/img"
+	"github.com/teohen/ascii-render/video"
 	_ "image/png"
-	"math"
-	"os"
-	"strings"
+	"log"
 )
 
-func loadImage(filePath string) (image.Image, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	return image, err
-}
+const IMG_SCALE_X = 1
+const IMG_SCALE_Y = 2
 
 func main() {
-	img, err := loadImage("teteo.png")
-	if err != nil {
-		panic(err)
-	}
-	mappedChars := " .:-=+*#%@"
-	ramp := strings.Split(mappedChars, "")
-	max := img.Bounds().Max
-	scaleX, scaleY := 1, 2
+	var (
+		filePath = flag.String("file", "", "path of the file to be rendered")
+		fileType = flag.String("type", "img", "type of the file to be rendered (img, vid)")
+	)
 
-	for i := 0; i < max.Y; i += scaleY {
-		for j := 0; j < max.X; j += scaleX {
-			pixelColor := img.At(j, i)
-			r, g, b, _ := pixelColor.RGBA()
-			avg := int((math.Floor(float64(r)/7281) + math.Floor(float64(g)/7281) + math.Floor(float64(b)/7281)) / 3)
-			char := ramp[avg]
-			fmt.Print(char)
-		}
-		fmt.Println()
+	flag.Parse()
+
+	path := *filePath
+	ftype := *fileType
+
+	if path == "" {
+		log.Fatal("a file path is required as argument '--file'")
 	}
 
+	if ftype == "vid" {
+		video.RenderVideoFile(path, true)
+	} else {
+		img.RenderImgFile(path, true)
+	}
 }
