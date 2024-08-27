@@ -30,7 +30,7 @@ func RenderImgFile(filePath string, resizeWindow bool) {
 
 	imageMax := img.Bounds().Max
 	if resizeWindow {
-		err := commom.ResizeTerminal(imageMax.X+1, imageMax.Y/2+1)
+		err := commom.ResizeTerminal((imageMax.X/IMG_SCALE_X)+1, (imageMax.Y/IMG_SCALE_Y/2)+1)
 		if err != nil {
 			log.Fatal("Error resizing window: ", err.Error())
 		}

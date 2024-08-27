@@ -7,6 +7,7 @@ import (
 	_ "image/png"
 	"math"
 	"os/exec"
+	"strings"
 )
 
 func Render(img image.Image, x, y int) {
