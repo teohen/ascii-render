@@ -9,9 +9,6 @@ import (
 	"github.com/teohen/ascii-render/video"
 )
 
-const IMG_SCALE_X = 1
-const IMG_SCALE_Y = 2
-
 func main() {
 	var (
 		filePath = flag.String("file", "", "path of the file to be rendered")
