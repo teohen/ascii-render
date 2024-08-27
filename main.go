@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	"github.com/teohen/ascii-render/img"
-	"github.com/teohen/ascii-render/video"
 	_ "image/png"
 	"log"
+
+	"github.com/teohen/ascii-render/img"
+	"github.com/teohen/ascii-render/video"
 )
 
 const IMG_SCALE_X = 1
