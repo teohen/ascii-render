@@ -3,6 +3,7 @@ package video
 import (
 	"errors"
 	"fmt"
+	"github.com/teohen/ascii-render/commom"
 	"image"
 	_ "image/png"
 	"io"
@@ -12,8 +13,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"github.com/teohen/ascii-render/commom"
 )
 
 const VIDEO_SCALE_X = 2

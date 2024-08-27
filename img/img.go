@@ -2,12 +2,11 @@ package img
 
 import (
 	"fmt"
+	"github.com/teohen/ascii-render/commom"
 	"image"
 	_ "image/png"
 	"log"
 	"os"
-
-	"github.com/teohen/ascii-render/commom"
 )
 
 const IMG_SCALE_X = 1
